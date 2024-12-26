@@ -1,0 +1,18 @@
+<div>
+  <div>
+    <div>
+      <h1><%= '日記作成' %></h1>
+      <%= form_with model: @diary do |f| %>
+        <div>
+          <%= f.label :タイトル %>
+          <%= f.text_field :title %>
+        </div>
+        <div>
+          <%= f.label :本文 %>
+          <%= f.text_area :body, rows: "10" %>
+        </div>
+        <%= f.submit '投稿' %>
+      <% end %>
+    </div>
+  </div>
+</div>

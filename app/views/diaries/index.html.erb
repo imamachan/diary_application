@@ -1,6 +1,14 @@
 <h1>日記一覧（仮）</h1>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>
+
 <p>ログイン中のユーザー: <%= current_user.name %></p>
 <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
+<%= link_to '日記作成', new_diary_path %>
 
 <div>
     <div>
