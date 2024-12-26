@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to diaries_path, success: t('ログインしました')
+      redirect_to diaries_path, success: t("ログインしました")
     else
       render :new
     end
