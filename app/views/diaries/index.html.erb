@@ -1,0 +1,15 @@
+<h1>日記一覧（仮）</h1>
+<p>ログイン中のユーザー: <%= current_user.name %></p>
+<%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
+
+<div>
+    <div>
+      <div>
+        <% if @diaries.present? %>
+          <%= render @diaries %>
+        <% else %>
+          <div>掲示板がありません</div>
+        <% end %>
+      </div>
+    </div>
+</div>

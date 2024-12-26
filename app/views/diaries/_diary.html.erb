@@ -1,0 +1,27 @@
+<div>
+  <div id="diary-id-<%= diary.id %>">
+    <div>
+      <%= image_tag "diary_placeholder.png", width: "300", height:"200" %>
+      <div>
+        <div>
+          <h4>
+            <%= link_to diary.title, '#' %>
+          </h4>
+          <div>
+            <%= link_to '#', id: "button-edit-#{diary.id}" do %>
+              <i></i>
+            <% end %>
+            <%= link_to '#', id: "button-delete-#{diary.id}", method: :delete, data: { confirm: '' } do %>
+              <i></i>
+            <% end %>
+          </div>
+        </div>
+        <ul>
+          <li><i></i><%= diary.user.name %></li>
+          <li><i></i><%= l diary.created_at, format: :short %></li>
+        </ul>
+        <p>本文</p>
+      </div>
+    </div>
+  </div>
+</div>
