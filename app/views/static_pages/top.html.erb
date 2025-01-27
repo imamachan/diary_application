@@ -1,13 +1,26 @@
-<div>
-  <div>
-    <h1>HiBilog</h1>
-      <p>今日も一つ、心に残るログを。</p>
-    <div>
-      <!-- ユーザー登録ボタン -->
-      <%= link_to 'ユーザー登録', new_user_path %>
-      
-      <!-- ログインボタン -->
-      <%= link_to 'ログイン',  login_path %>
+<div data-layer="Desktop - トップページ" class="Desktop w-full h-screen relative bg-white overflow-hidden flex items-center">
+  <!-- ロゴ (左側に右寄せ) -->
+  <div class="w-1/2 flex justify-end items-center">
+    <div data-layer="HiBiLog" class="Hibilog w-[228px] h-[243px] text-8xl font-bold font-['Inter'] tracking-[9.60px] text-[#ffa306] text-center">
+      HiBi<br>Log
+    </div>
+  </div>
+
+  <!-- メッセージとボタン (右側に左寄せ) -->
+  <div class="w-1/2 flex flex-col items-start space-y-8 ml-8">
+    <!-- 今日も一つのメッセージ -->
+    <div data-layer="今日も一つ、 心に残るログを。" class="w-[397px] h-[116px] text-[#333333] text-5xl font-normal font-['Inter']">
+      今日も一つ、<br/>心に残るログを。
+    </div>
+
+    <!-- ボタン -->
+    <div data-layer="Group 3" class="space-y-4">
+      <%= link_to new_user_path, class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" do %>
+        新規登録
+      <% end %>
+      <%= link_to login_path, class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" do %>
+        ログイン
+      <% end %>
     </div>
   </div>
 </div>

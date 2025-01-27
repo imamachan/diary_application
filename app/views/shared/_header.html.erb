@@ -1,0 +1,13 @@
+<header class="w-full h-14 flex items-center justify-between px-8 bg-white shadow-md">
+  <!-- ロゴ -->
+  <div class="Hibilog text-amber-500 text-4xl font-normal font-['Inter']">
+    HiBiLog
+  </div>
+
+  <!-- ログアウトリンク -->
+  <div>
+    <%= link_to 'ログアウト', logout_path, 
+        data: { turbo_method: :delete }, 
+        class: "text-zinc-800 text-base font-normal font-['Inter'] hover:underline" %>
+  </div>
+</header>

@@ -17,7 +17,33 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="bg-orange-200">
-    <%= yield %>
+  <body class="min-h-screen flex flex-col bg-gray-100">
+    <% unless @hide_header_footer %>
+      <!-- 固定ヘッダー -->
+      <header class="fixed top-0 left-0 w-full bg-white">
+        <%= render 'shared/header' %>
+      </header>
+
+      <div class="flex flex-1 pt-16"> <!-- pt-16: ヘッダー高さ分のスペースを確保 -->
+        <!-- 固定サイドバー -->
+        <aside class="fixed top-14 left-0 h-[calc(100vh-4rem)] w-64 bg-gray-200 shadow-lg z-40">
+          <%= render 'shared/sidebar' %>
+        </aside>
+
+        <!-- メインコンテンツ -->
+        <main class="ml-64 w-full p-6">
+          <%= yield %>
+        </main>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
+    <% unless @hide_header_footer %>
+      <!-- フッター -->
+      <footer class="w-full bg-gray-800 text-white text-center p-4">
+        <%= render 'shared/footer' %>
+      </footer>
+    <% end %>
   </body>
 </html>

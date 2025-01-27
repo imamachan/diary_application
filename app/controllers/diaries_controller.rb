@@ -12,11 +12,9 @@ class DiariesController < ApplicationController
   def create
     @diary = current_user.diaries.build(diary_params)
     if @diary.save
-      flash[:notice] = "日記が投稿されました"
-      redirect_to diaries_path
+      redirect_to diaries_path, success: "日記が投稿されました"
     else
-      flash[:alert] = "日記の投稿に失敗しました"
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, danger: "日記の投稿に失敗しました"
     end
   end
 

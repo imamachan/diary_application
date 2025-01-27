@@ -1,14 +1,15 @@
 class UserSessionsController < ApplicationController
     skip_before_action :require_login, only: %i[new create]
 
-  def new; end
+  def new
+    @hide_header_footer = true
+  end
 
   def create
     @user = login(params[:email], params[:password])
 
     if @user
-      flash[:notice] = "ログインしました"
-      redirect_to diaries_path
+      redirect_to diaries_path, success: "ログインしました"
     else
       render :new
     end

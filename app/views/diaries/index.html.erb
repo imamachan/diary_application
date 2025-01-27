@@ -1,13 +1,19 @@
-<h1>日記一覧（仮）</h1>
-
-<% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
-<% elsif flash[:alert] %>
-  <p><%= flash[:alert] %></p>
+<% flash.each do |message_type, message| %>
+  <% bg_color = case message_type.to_sym
+                when :success then "bg-blue-100 text-blue-700 border-blue-300"
+                when :danger then "bg-red-100 text-red-700 border-red-300"
+                else "bg-gray-100 text-gray-700 border-gray-300"
+                end %>
+  <div class="flex items-center justify-between p-4 mb-4 border-l-4 rounded <%= bg_color %>">
+    <span class="text-sm">
+      <%= message %>
+    </span>
+    <button type="button" class="text-gray-500 hover:text-gray-700" onclick="this.parentElement.style.display='none'">
+      ✕
+    </button>
+  </div>
 <% end %>
 
-<p>ログイン中のユーザー: <%= current_user.name %></p>
-<%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
 <%= link_to '日記作成', new_diary_path %>
 
 <div>

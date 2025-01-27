@@ -1,26 +1,36 @@
 <% if flash[:alert] %>
-  <p><%= flash[:alert] %></p>
+  <p class="text-red-500 text-center text-sm"><%= flash[:alert] %></p>
 <% end %>
 
-<div>
-  <div>
-    <div>
-      <h1>ログイン</h1>
-      <%= form_with url: login_path do |f| %>
-        <div 
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email %>
-        </div>
-        <div>
-          <%= f.label :パスワード %>
-          <%= f.password_field :password %>
-        </div>
-        <%= f.submit "ログイン" %>
-      <% end %>
-      <div>
-        <%= link_to '登録ページへ', new_user_path %>
-        <%= link_to 'パスワードをお忘れの方はこちら', '#' %>
-      </div>
+<div data-layer="Desktop - ログイン" class="Desktop w-full h-screen relative bg-white overflow-hidden flex items-center">
+  <!-- ロゴ (左側に右寄せ) -->
+  <div class="w-1/2 flex justify-end items-center">
+    <div data-layer="HiBiLog" class="Hibilog w-[228px] h-[243px] text-8xl font-bold font-['Inter'] tracking-[9.60px] text-[#ffa306] text-center">
+      HiBi<br>Log
     </div>
+  </div>
+
+  <!-- フォーム (左寄せ) -->
+<div class="w-1/2 flex flex-col items-start space-y-4 ml-8">
+  <%= form_with url: login_path, class: "flex flex-col items-start space-y-6 w-64" do |f| %>
+    <!-- メールアドレス -->
+    <div class="flex flex-col w-full">
+      <%= f.label :email, "メールアドレス", class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
+      <%= f.email_field :email, class: "w-full h-10 bg-white border border-black rounded-md px-2" %>
+    </div>
+    
+    <!-- パスワード -->
+    <div class="flex flex-col w-full">
+      <%= f.label :password, "パスワード", class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
+      <%= f.password_field :password, class: "w-full h-10 bg-white border border-black rounded-md px-2" %>
+    </div>
+    
+    <!-- ログインボタン -->
+    <%= f.submit "ログイン", class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" %>
+  <% end %>
+
+  <!-- 戻るリンク (フォームの下に配置) -->
+  <div class="flex justify-start">
+    <%= link_to '戻る', root_path, class: "text-zinc-800 text-base font-normal font-['Inter']" %>
   </div>
 </div>
