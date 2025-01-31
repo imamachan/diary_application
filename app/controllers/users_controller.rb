@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :require_login, only: %i[new create]
+    skip_before_action :require_login, only: %i[new create show]
 
   def new
     @hide_header_footer = true
@@ -15,7 +15,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show ;end
+  def show
+    @user = current_user
+  end
 
   private
 
