@@ -21,6 +21,6 @@ class DiariesController < ApplicationController
    private
 
   def diary_params
-    params.require(:diary).permit(:title, :body)
+    params.require(:diary).permit(:title, :body, :diary_image, :diary_image_cache)
   end
 end
