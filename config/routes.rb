@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root "static_pages#top"
   resources :tasks
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create show]
   resources :diaries, only: %i[index new create]
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
   get "diaries", to: "diaries#index"
+  get "mypage", to: "users#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
