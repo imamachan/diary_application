@@ -12,6 +12,10 @@
           <%= f.text_field :title %>
         </div>
         <div>
+          <%= f.label :date, "日付" %>
+          <%= f.text_field :date, class: "flatpickr", data: { controller: "flatpickr" } %>
+        </div>
+        <div>
           <%= f.label :本文 %>
           <%= f.text_area :body, rows: "10" %>
         </div>
