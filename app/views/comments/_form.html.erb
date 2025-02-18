@@ -1,0 +1,16 @@
+<div id="comment-form" class="w-full max-w-4xl mx-auto mt-6 p-4 border rounded-lg shadow-md bg-white">
+  <h3 class="text-lg font-semibold mb-3">コメントを投稿</h3>
+  
+  <%= form_with model: [@diary, @diary.comments.build], local: true, class: "space-y-4" do |f| %>
+    <!-- コメント入力エリア -->
+    <div>
+      <%= f.label :body, "コメント内容", class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.text_area :body, class: "w-full border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400", rows: 4, placeholder: "コメントを入力..." %>
+    </div>
+
+    <!-- 送信ボタン -->
+    <div class="text-right">
+      <%= f.submit "投稿", class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors" %>
+    </div>
+  <% end %>
+</div>

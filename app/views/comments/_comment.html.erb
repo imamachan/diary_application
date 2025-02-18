@@ -1,0 +1,29 @@
+<div class="border rounded-lg shadow-md p-4 w-full max-w-4xl mx-auto mt-4">
+  <div class="flex items-center space-x-4">
+    <!-- ユーザーアイコン -->
+    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-sm text-gray-600">
+      noimage
+    </div>
+
+    <!-- コメント内容 -->
+    <div class="flex-1">
+      <p class="text-lg font-semibold"><%= comment.user.name %></p>
+      <p class="text-gray-700"><%= comment.body %></p>
+    </div>
+
+    <!-- 編集・削除ボタン -->
+    <div class="space-x-2">
+      <%= link_to "編集", "#", class: "border px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
+      <%= link_to "削除", "#", class: "border px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
+    </div>
+  </div>
+
+  <!-- コメント下部の情報 -->
+  <div class="flex justify-between items-center mt-2 text-gray-600 text-sm">
+    <div class="flex space-x-4">
+      <span><i class="fas fa-star"></i> 1</span>
+      <span><i class="fas fa-comment"></i> 1</span>
+    </div>
+    <p class="text-gray-500"><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+  </div>
+</div>
