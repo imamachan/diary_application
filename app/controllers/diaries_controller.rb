@@ -24,8 +24,6 @@ class DiariesController < ApplicationController
     @comments = @diary.comments.includes(:user).order(created_at: :desc)
   end
 
-  
-
    private
 
   def diary_params
