@@ -6,7 +6,7 @@
 
   <!-- ログアウトリンク -->
   <div>
-    <%= link_to 'ログアウト', logout_path, 
+    <%= link_to t("views.header.logout"), logout_path, 
         data: { turbo_method: :delete }, 
         class: "text-zinc-800 text-base font-normal font-['Inter'] hover:underline" %>
   </div>

@@ -9,8 +9,9 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to diaries_path, success: "ログインしました"
+      redirect_to diaries_path, success: t("views.flash_messages.login_success")
     else
+      flash.now[:danger] = t("views.flash_messages.login_failed")
       render :new
     end
   end

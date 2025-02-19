@@ -21,15 +21,15 @@
 
     <!-- ボタン -->
     <div class="flex space-x-4">
-      <%= link_to "日記を書く", new_diary_path, class: "border p-2 rounded bg-orange-400 text-white hover:bg-orange-600" %>
+      <%= link_to t("views.mypage_header.diary_create"), new_diary_path, class: "border p-2 rounded bg-orange-400 text-white hover:bg-orange-600" %>
     </div>
   </div>
 
   <!-- タブ -->
   <div class="flex border-b">
-    <% tabs = { "公開" => "#", "非公開" => "#", "コメント" => "#", "お気に入り" => "#" } %>
+    <% tabs = { t("views.mypage_header.public") => "#", t("views.mypage_header.private") => "#", t("views.mypage_header.comments") => "#", t("views.mypage_header.favorite") => "#" } %>
     <% tabs.each do |name, path| %>
-      <%= link_to name, path, class: "px-6 py-2 text-center w-1/4 #{name == '公開' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
+      <%= link_to name, path, class: "px-6 py-2 text-center w-1/4 #{name == t("views.mypage_header.public") ? 'bg-orange-400 text-white' : 'bg-white'}" %>
     <% end %>
   </div>
 </div>

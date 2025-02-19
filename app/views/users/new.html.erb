@@ -11,35 +11,35 @@
       <%= form_with model: @user, class: "flex flex-col items-start space-y-6 w-64" do |f| %>
       <!-- 名前 -->
       <div class="flex flex-col w-full">
-        <%= f.label :name, "名前", class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
+        <%= f.label :name, t("views.sessions.name"), class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
         <%= f.text_field :name, class: "w-full h-10 bg-white border border-black rounded-md px-2" %>
       </div>
       
       <!-- メールアドレス -->
       <div class="flex flex-col w-full">
-        <%= f.label :email, "メールアドレス", class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
+        <%= f.label :email, t("views.sessions.email"), class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
         <%= f.email_field :email, class: "w-full h-10 bg-white border border-black rounded-md px-2" %>
       </div>
       
       <!-- パスワード -->
       <div class="flex flex-col w-full">
-        <%= f.label :password, "パスワード", class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
+        <%= f.label :password, t("views.sessions.password"), class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
         <%= f.password_field :password, class: "w-full h-10 bg-white border border-black rounded-md px-2" %>
       </div>
       
       <!-- パスワード確認 -->
       <div class="flex flex-col w-full">
-        <%= f.label :password_confirmation, "パスワード確認", class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
+        <%= f.label :password_confirmation, t("views.sessions.password__confirmation"), class: "text-black text-base font-normal font-['Inter'] tracking-wider mb-1" %>
         <%= f.password_field :password_confirmation, class: "w-full h-10 bg-white border border-black rounded-md px-2" %>
       </div>
       
       <!-- 登録ボタン -->
-      <%= f.submit "登録", class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" %>
+      <%= f.submit t("helpers.submit.create"), class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" %>
     <% end %>
 
     <!-- ログインページリンク -->
     <div class="flex justify-start">
-      <%= link_to 'ログインページへ', login_path, class: "text-zinc-800 text-base font-normal font-['Inter']" %>
+      <%= link_to t("views.sessions.to_login_page"), login_path, class: "text-zinc-800 text-base font-normal font-['Inter']" %>
     </div>
   </div>
 </div>
