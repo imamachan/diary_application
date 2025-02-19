@@ -16,10 +16,10 @@
     <!-- ボタン -->
     <div data-layer="Group 3" class="space-y-4">
       <%= link_to new_user_path, class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" do %>
-        新規登録
+        <%= t("views.users.new") %>
       <% end %>
       <%= link_to login_path, class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" do %>
-        ログイン
+        <%= t("views.sessions.login") %>
       <% end %>
     </div>
   </div>

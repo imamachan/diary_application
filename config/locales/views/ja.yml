@@ -1,0 +1,42 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 投稿
+      update: 更新
+      edit: 編集
+      delete: 削除
+  views:
+    diaries:
+      new: 日記作成
+      title: タイトル
+      date: 日付
+      body: 本文
+      public: 公開
+      photo: 写真
+    users:
+      new: 新規登録
+    comments:
+      body: コメント内容
+    sessions:
+      email: メールアドレス
+      password: パスワード
+      login: ログイン
+      back: 戻る
+      name: 名前
+      password__confirmation: パスワード確認
+      to_login_page: ログインページへ
+    flash_messages:
+      login_success: ログインしました
+      login_failed: ログインに失敗しました
+    header:
+      logout: ログアウト
+    sidebar:
+      mypage: マイページ
+      diary_index: 日記一覧
+    mypage_header:
+      public: 公開
+      private: 非公開
+      comments: コメント
+      favorite: お気に入り
+      diary_create: 日記を書く
