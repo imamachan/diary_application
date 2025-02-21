@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+
 <% flash.each do |message_type, message| %>
   <% bg_color = case message_type.to_sym
                 when :success then "bg-blue-100 text-blue-700 border-blue-300"
