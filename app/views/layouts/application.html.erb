@@ -4,7 +4,7 @@
 
     <script src="https://kit.fontawesome.com/ec0448f744.js" crossorigin="anonymous"></script>
 
-    <title><%= content_for(:title) || "Myapp" %></title>
+    <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>

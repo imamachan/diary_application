@@ -4,7 +4,7 @@
   <%= form_with model: [@diary, @diary.comments.build], local: true, class: "space-y-4" do |f| %>
     <!-- コメント入力エリア -->
     <div>
-      <%= f.label :body, t("views.comments.body"), class: "block text-gray-700 font-medium mb-1" %>
+      <%= f.label :body, t("comments.body"), class: "block text-gray-700 font-medium mb-1" %>
       <%= f.text_area :body, class: "w-full border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400", rows: 4, placeholder: "コメントを入力..." %>
     </div>
 
