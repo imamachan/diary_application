@@ -1,0 +1,76 @@
+<%= form_with model: @diary do |f| %>
+        
+        <!-- タイトル・日付・天気 -->
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="w-1/3">
+            <%= f.label :title, t(".title") %>
+            <%= f.text_field :title, class: "w-full border p-2 rounded" %>
+          </div>
+          <div class="w-1/3">
+            <%= f.label :date, t(".date") %>
+            <%= f.text_field :date, class: "flatpickr w-full border p-2 rounded", data: { controller: "flatpickr" } %>
+          </div>
+          <div class="mt-4 w-1/3 flex text-2xl justify space-x-4">
+            <input type="radio" name="diary[weather]" value="sunny" id="weather_sunny" class="hidden peer/sunny">
+            <label for="weather_sunny" class="cursor-pointer text-gray-500 peer-checked/sunny:text-gray-900 transition-colors">
+              <i class="fas fa-sun text-xl"></i>
+            </label>
+
+            <input type="radio" name="diary[weather]" value="cloudy" id="weather_cloudy" class="hidden peer/cloudy">
+            <label for="weather_cloudy" class="cursor-pointer text-gray-500 peer-checked/cloudy:text-gray-900 transition-colors">
+              <i class="fas fa-cloud text-xl"></i>
+            </label>
+
+            <input type="radio" name="diary[weather]" value="rainy" id="weather_rainy" class="hidden peer/rainy">
+            <label for="weather_rainy" class="cursor-pointer text-gray-500 peer-checked/rainy:text-gray-900 transition-colors">
+              <i class="fa-solid fa-umbrella text-xl"></i>
+            </label>
+          </div>
+        </div>
+
+        <!-- 本文 -->
+        <div class="mb-4">
+          <%= f.label :body, t(".body") %>
+          <%= f.text_area :body, class: "w-full h-40 border p-2 rounded" %>
+        </div>
+
+        <!-- 画像選択 + 感情アイコン -->
+      <div class="mb-6 flex items-center space-x-4">
+        <!-- 画像アップロード -->
+        <div>
+          <%= f.label :diary_image, t(".photo") %>
+          <%= f.file_field :diary_image, accept: 'image/*', class: "border p-2" %>
+          <%= f.hidden_field :diary_image_cache %>
+        </div>
+
+        <!-- 感情選択 -->
+        <div class="flex text-2xl space-x-2">
+          <input type="radio" name="diary[emotion]" value="smile" id="emotion_smile" class="hidden peer/smile">
+          <label for="emotion_smile" class="cursor-pointer text-gray-500 peer-checked/smile:text-gray-900">
+            <i class="fa-solid fa-face-smile text-inherit"></i>
+          </label>
+
+          <input type="radio" name="diary[emotion]" value="angry" id="emotion_angry" class="hidden peer/angry">
+          <label for="emotion_angry" class="cursor-pointer text-gray-500 peer-checked/angry:text-gray-900">
+            <i class="fa-solid fa-face-angry text-inherit"></i>
+          </label>
+
+          <input type="radio" name="diary[emotion]" value="sad" id="emotion_sad" class="hidden peer/sad">
+          <label for="emotion_sad" class="cursor-pointer text-gray-500 peer-checked/sad:text-gray-900">
+            <i class="fa-solid fa-face-sad-tear text-inherit"></i>
+          </label>
+
+          <input type="radio" name="diary[emotion]" value="normal" id="emotion_normal" class="hidden peer/normal">
+          <label for="emotion_normal" class="cursor-pointer text-gray-500 peer-checked/normal:text-gray-900">
+            <i class="fa-solid fa-face-meh text-inherit"></i>
+          </label>
+        </div>
+      </div>
+
+        <!-- 公開・投稿ボタン -->
+        <div class="flex justify-between">
+          <button type="button" class="w-1/2 border p-2 rounded text-center">公開</button>
+          <%= f.submit t("helpers.submit.submit"), class: "w-1/2 border p-2 rounded bg-blue-500 text-white" %>
+        </div>
+
+      <% end %>

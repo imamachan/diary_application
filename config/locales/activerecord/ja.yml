@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
+      diary: 日記
     attributes:
       user:
         email: メールアドレス

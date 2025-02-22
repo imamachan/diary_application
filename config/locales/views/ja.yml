@@ -1,4 +1,12 @@
 ja:
+  defaults:
+    delete_confirm: 削除しますか？
+    flash_messages:
+      login_success: ログインしました
+      login_failed: ログインに失敗しました
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
   helpers:
     submit:
       create: 登録
@@ -21,6 +29,8 @@ ja:
       body: 本文
       public: 公開
       photo: 写真
+    edit:
+      title: 日記編集
   users:
     new:
       title: 新規登録
@@ -40,9 +50,6 @@ ja:
       password: パスワード
       login: ログイン
       back: 戻る
-  flash_messages:
-    login_success: ログインしました
-    login_failed: ログインに失敗しました
   header:
     logout: ログアウト
   sidebar:
