@@ -1,0 +1,6 @@
+<%= link_to bookmarks_path(diary_id: diary.id), 
+  id: "bookmark-button-for-diary-#{diary.id}", 
+  data: { turbo_method: :post, turbo_frame: "bookmark-#{diary.id}" },
+  class: "text-gray-500 hover:text-yellow-400 transition" do %>
+  <i class="fas fa-star"></i>
+<% end %>

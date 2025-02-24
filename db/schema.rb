@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_18_095533) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_22_233451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diary_id"], name: "index_bookmarks_on_diary_id"
+    t.index ["user_id", "diary_id"], name: "index_bookmarks_on_user_id_and_diary_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
@@ -53,6 +63,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_095533) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bookmarks", "diaries"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "diaries"
   add_foreign_key "comments", "users"
   add_foreign_key "diaries", "users"

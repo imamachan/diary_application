@@ -38,11 +38,15 @@ class DiariesController < ApplicationController
     end
   end
 
-   def destroy
+  def destroy
     diary = current_user.diaries.find(params[:id])
     diary.destroy!
     redirect_to diaries_path, success: t("defaults.flash_messages.deleted", item: Diary.model_name.human), status: :see_other
-   end
+  end
+
+  def bookmarks
+    @bookmark_diaries = current_user.bookmark_diaries.includes(:user).order(created_at: :desc)
+  end
 
    private
 

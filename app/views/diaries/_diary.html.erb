@@ -15,6 +15,7 @@
       <p class="text-black text-base font-normal font-['Inter']">
         <%= truncate(diary.body, length: 30) %>
       </p>
+      <%= render 'bookmark_buttons', { diary: diary } %>
     </div>
   </div>
 </div>
