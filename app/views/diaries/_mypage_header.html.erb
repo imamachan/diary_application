@@ -27,7 +27,7 @@
 
   <!-- タブ -->
   <div class="flex border-b">
-    <% tabs = { t("mypage_header.public") => "#", t("mypage_header.private") => "#", t("mypage_header.comments") => "#", t("mypage_header.favorite") => "#" } %>
+    <% tabs = { t("mypage_header.public") => "#", t("mypage_header.private") => "#", t("mypage_header.comments") => "#", t("mypage_header.favorite") => bookmarks_diaries_path } %>
     <% tabs.each do |name, path| %>
       <%= link_to name, path, class: "px-6 py-2 text-center w-1/4 #{name == t("mypage_header.public") ? 'bg-orange-400 text-white' : 'bg-white'}" %>
     <% end %>

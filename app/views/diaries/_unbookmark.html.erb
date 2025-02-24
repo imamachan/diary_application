@@ -1,0 +1,6 @@
+<%= link_to bookmark_path(current_user.bookmarks.find_by(diary_id: diary.id)), 
+  id: "unbookmark-button-for-diary-#{diary.id}", 
+  data: { turbo_method: :delete, turbo_frame: "bookmark-#{diary.id}" },
+  class: "text-yellow-400 hover:text-gray-500 transition" do %>
+  <i class="fas fa-star"></i>
+<% end %>

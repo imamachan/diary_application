@@ -1,0 +1,7 @@
+<div>
+  <% if current_user.bookmark?(diary) %>
+    <%= render 'unbookmark', diary: diary %>
+  <% else %>
+    <%= render 'bookmark', diary: diary %>
+  <% end %>
+</div>

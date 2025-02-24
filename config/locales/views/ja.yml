@@ -25,12 +25,21 @@ ja:
       title: 日記詳細
     new:
       title: 日記を書く
+      diary_title: タイトル
       date: 日付
       body: 本文
       public: 公開
       photo: 写真
     edit:
       title: 日記編集
+    bookmarks:
+      title: お気に入り一覧
+      no_result: お気に入り中の掲示板がありません
+  bookmarks:
+    create:
+      success: ブックマークしました
+    destroy:
+      success: ブックマークを外しました
   users:
     new:
       title: 新規登録
