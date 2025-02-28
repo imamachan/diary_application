@@ -7,6 +7,9 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新出来ませんでした"
       deleted: "%{item}を削除しました"
+      not_deleted: "%{item}を削除できませんでした"
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
   helpers:
     submit:
       create: 登録
@@ -35,6 +38,8 @@ ja:
     bookmarks:
       title: お気に入り一覧
       no_result: お気に入り中の掲示板がありません
+    mypage:
+      title: マイページ
   bookmarks:
     create:
       success: ブックマークしました

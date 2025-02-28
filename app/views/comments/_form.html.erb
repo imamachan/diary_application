@@ -1,7 +1,8 @@
 <div id="comment-form" class="w-full max-w-4xl mx-auto mt-6 p-4 border rounded-lg shadow-md bg-white">
   <h3 class="text-lg font-semibold mb-3">コメントを投稿</h3>
   
-  <%= form_with model: [@diary, @diary.comments.build], local: true, class: "space-y-4" do |f| %>
+  <%= form_with model: comment, url: diary_comments_path(diary) , class: "space-y-4" do |f| %>
+     
     <!-- コメント入力エリア -->
     <div>
       <%= f.label :body, t("comments.body"), class: "block text-gray-700 font-medium mb-1" %>

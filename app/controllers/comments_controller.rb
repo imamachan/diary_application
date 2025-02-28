@@ -1,10 +1,19 @@
 class CommentsController < ApplicationController
   def create
-    comment = current_user.comments.build(comment_params)
-    if comment.save
-      redirect_to diary_path(comment.diary)
+    @comment = current_user.comments.build(comment_params)
+    if @comment.save
+      flash.now[:success] = t("defaults.flash_messages.created", item: Comment.model_name.human)
     else
-      redirect_to diary_path(comment.diary)
+      flash.now[:danger] = t("defaults.flash_messages.not_created", item: Comment.model_name.human)
+    end
+  end
+
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    if @comment.destroy
+      flash.now[:success] = t("defaults.flash_messages.deleted", item: Comment.model_name.human)
+    else
+      flash.now[:danger] = t("defaults.flash_messages.not_deleted", item: Comment.model_name.human)
     end
   end
 

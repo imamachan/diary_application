@@ -1,4 +1,4 @@
-<div class="border rounded-lg shadow-md p-4 w-full max-w-4xl mx-auto mt-4">
+<div class="border rounded-lg shadow-md p-4 w-full max-w-4xl mx-auto mt-4" id="comment-<%= comment.id %>" >
   <div class="flex items-center space-x-4">
     <!-- ユーザーアイコン -->
     <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-sm text-gray-600">
@@ -11,10 +11,14 @@
       <p class="text-gray-700"><%= comment.body %></p>
     </div>
 
-    <!-- 編集・削除ボタン -->
+    <!--削除ボタン -->
     <div class="space-x-2">
-      <%= link_to t("helpers.submit.edit"), "#", class: "border px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
-      <%= link_to t("helpers.submit.delete"), "#", class: "border px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
+      <%= link_to t("helpers.submit.delete"), comment_path(comment), 
+      data: { 
+      turbo_method: :delete, 
+      turbo_confirm: t("defaults.delete_confirm") 
+      }, 
+      class: "border px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
     </div>
   </div>
 
