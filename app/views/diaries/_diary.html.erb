@@ -1,21 +1,24 @@
-<div class="mb-6"> <!-- 各日記の下に余白を追加 -->
-  <div class="w-full h-[200px] p-4 bg-white border border-zinc-800 flex flex-col space-y-4">
-    <div class="flex items-center space-x-4">
-      <div class="w-14 h-14 bg-zinc-300 rounded-full"></div>
-      <div class="flex flex-col">
-        <h2 class="text-xl font-bold">
-          <%= link_to diary.title, diary_path(diary) %>
-        </h2>
-        <p class="text-sm text-gray-500">
-          <%= diary.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-        </p>
-      </div>
-    </div>
-    <div class="bg-orange-100 border border-black p-4 h-[80px] overflow-hidden">
-      <p class="text-black text-base font-normal font-['Inter']">
-        <%= truncate(diary.body, length: 30) %>
+<div class="mb-6"> 
+<div class="w-full h-[200px] p-4 bg-white border border-zinc-800 flex flex-col space-y-4 relative">
+  <div class="flex items-center space-x-4">
+    <div class="w-14 h-14 bg-zinc-300 rounded-full"></div>
+    <div class="flex flex-col">
+      <h2 class="text-xl font-bold">
+        <%= link_to diary.title, diary_path(diary) %>
+      </h2>
+      <p class="text-sm text-gray-500">
+        <%= diary.created_at.strftime("%Y年%m月%d日 %H:%M") %>
       </p>
-      <%= render 'bookmark_buttons', { diary: diary } %>
     </div>
   </div>
+  <div class="bg-orange-100 border border-black p-4 h-[80px] overflow-hidden">
+    <p class="text-black text-base font-normal font-['Inter']">
+      <%= truncate(diary.body, length: 30) %>
+    </p>
+  </div>
+  <!-- ブックマークボタンを外枠の右下に配置 -->
+  <div class="absolute right-20 bottom-2">
+    <%= render 'bookmark_buttons', { diary: diary } %>
+  </div>
+</div>
 </div>
