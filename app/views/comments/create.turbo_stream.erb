@@ -3,12 +3,25 @@
     <%= render 'comments/form', comment: @comment, diary: @comment.diary %>
   <% end %>
 <% else %>
-  <%= turbo_stream.prepend "table-comment" do %>
-    <%= render 'comments/comment', comment: @comment %>
+  <!-- コメントリスト全体を最新順で置き換える -->
+  <%= turbo_stream.replace "comments-list" do %>
+    <%= render partial: 'comments/comment_list', locals: { comments: @comment.diary.comments.order(created_at: :desc) } %>
   <% end %>
+
+  <!-- コメントカウントを更新 -->
+  <%= turbo_stream.replace "comment-count-#{@comment.diary.id}" do %>
+    <div class="flex items-center space-x-1">
+      <i class="fas fa-comment"></i>
+      <span><%= @comment.diary.comments.count %></span>
+    </div>
+  <% end %>
+
+  <!-- コメントフォームをリセット -->
   <%= turbo_stream.replace "comment-form" do %>
     <%= render 'comments/form', comment: Comment.new, diary: @comment.diary %>
   <% end %>
+
+  <!-- フラッシュメッセージを表示 -->
   <%= turbo_stream.append "flash-messages" do %>
     <%= render "shared/flash_messages" %>
   <% end %>

@@ -1,5 +1,12 @@
 <%= turbo_stream.remove "comment-#{@comment.id}" %>
 
+<%= turbo_stream.replace "comment-count-#{@diary.id}" do %>
+  <div class="flex items-center space-x-1">
+    <i class="fas fa-comment"></i>
+    <span><%= @diary.comments.count %></span>
+  </div>
+<% end %>
+
 <%= turbo_stream.append "flash-messages" do %>
   <%= render "shared/flash_messages" %>
 <% end %>
