@@ -1,9 +1,9 @@
 <div class="border rounded-lg shadow-md p-4 w-full max-w-4xl mx-auto mt-4" id="comment-<%= comment.id %>" >
   <div class="flex items-center space-x-4">
     <!-- ユーザーアイコン -->
-    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-sm text-gray-600">
-      noimage
-    </div>
+    <%= link_to comment.user do %>
+    <%= image_tag comment.user.profile_picture.url || 'sample.jpg', class: 'w-14 h-14 rounded-full object-cover' %>
+  <% end %>
 
     <!-- コメント内容 -->
     <div class="flex-1">

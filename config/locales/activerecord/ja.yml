@@ -3,9 +3,23 @@ ja:
     models:
       diary: 日記
       comment: コメント
+      user: プロフィール
     attributes:
       user:
         email: メールアドレス
         name: 名前
+        profile_picture: プロフィール画像
+        profile_comment: コメント
         password: パスワード
         password_confirmation: パスワード確認
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "は必須項目です"
+            email:
+              blank: "は必須項目です"
+              invalid: "は正しい形式で入力してください"
+            profile_comment:
+              too_long: "は30文字以内で入力してください"
