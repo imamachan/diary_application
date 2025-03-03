@@ -1,7 +1,9 @@
 <div class="mb-6"> 
 <div class="w-full h-[200px] p-4 bg-white border border-zinc-800 flex flex-col space-y-4 relative">
   <div class="flex items-center space-x-4">
-    <div class="w-14 h-14 bg-zinc-300 rounded-full"></div>
+     <%= link_to diary.user do %>
+    <%= image_tag diary.user.profile_picture.url || 'sample.jpg', class: 'w-14 h-14 rounded-full object-cover' %>
+  <% end %>
     <div class="flex flex-col">
       <h2 class="text-xl font-bold">
         <%= link_to diary.title, diary_path(diary) %>

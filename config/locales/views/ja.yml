@@ -1,6 +1,7 @@
 ja:
   defaults:
     delete_confirm: 削除しますか？
+    edit: 編集
     flash_messages:
       login_success: ログインしました
       login_failed: ログインに失敗しました
@@ -45,6 +46,15 @@ ja:
       success: ブックマークしました
     destroy:
       success: ブックマークを外しました
+  profiles:
+    show:
+      title: プロフィール
+    edit:
+      title: プロフィール編集
+      to_login_page: ログインページへ
+      update: 更新
+      comment: コメント
+
   users:
     new:
       title: 新規登録

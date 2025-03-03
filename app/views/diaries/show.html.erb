@@ -7,9 +7,9 @@
 <div class="border rounded-lg shadow-md p-6 w-full max-w-4xl mx-auto">
   <div class="flex items-center space-x-6">
     <!-- ユーザーアイコン -->
-    <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center text-lg text-gray-600">
-      noimage
-    </div>
+     <%= link_to @diary.user do %>
+      <%= image_tag @diary.user.profile_picture.url || 'sample.jpg', class: 'w-14 h-14 rounded-full object-cover' %>
+     <% end %>
     <!-- タイトルと日付 -->
     <div class="flex-1">
       <h2 class="text-2xl font-semibold"><%= @diary.title %></h2>
