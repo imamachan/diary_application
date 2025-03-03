@@ -46,14 +46,29 @@
       <%= link_to t("helpers.submit.edit"), edit_diary_path(@diary), class: "border px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
       <%= link_to t("helpers.submit.delete"), diary_path(@diary), id: "button-delete-#{@diary.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } , class: "border px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-sm" %>
     </div>
-    <div class="flex space-x-6 text-gray-600">
-      <span><i class="fas fa-star"></i> 1</span>
-      <span><i class="fas fa-comment"></i> 1</span>
-    </div>
+    
+    <div class="flex space-x-6 text-gray-600 items-center">
+  <!-- ✅ ブックマークボタン & カウント -->
+  <div class="flex items-center space-x-1">
+    <%= render 'bookmark_buttons', { diary: @diary } %>
+  </div>
+
+  <!-- ✅ コメントアイコン & カウント -->
+<div id="comment-count-<%= @diary.id %>" class="flex items-center space-x-1">
+  <i class="fas fa-comment"></i>
+  <span><%= @diary.comments.count %></span>
+</div>
+
+
+</div>
+
   </div>
 </div>
-<div id="table-comment">
-<%= render 'comments/form', comment: @comment, diary: @diary %>
 
-<%= render @comments %>
+<div id="table-comment">
+  <%= render 'comments/form', comment: @comment, diary: @diary %>
+
+  <div id="comments-list">
+    <%= render partial: 'comments/comment_list', locals: { comments: @comments } %>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
+    @diary = @comment.diary
     if @comment.save
       flash.now[:success] = t("defaults.flash_messages.created", item: Comment.model_name.human)
     else
@@ -10,6 +11,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = current_user.comments.find(params[:id])
+    @diary = @comment.diary
     if @comment.destroy
       flash.now[:success] = t("defaults.flash_messages.deleted", item: Comment.model_name.human)
     else

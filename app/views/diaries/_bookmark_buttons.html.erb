@@ -1,7 +1,8 @@
-<div>
+<div id="bookmark-<%= diary.id %>" class="flex items-center space-x-1">
   <% if current_user.bookmark?(diary) %>
-    <%= render 'unbookmark', diary: diary %>
+    <%= render 'diaries/unbookmark', diary: diary %>
   <% else %>
-    <%= render 'bookmark', diary: diary %>
+    <%= render 'diaries/bookmark', diary: diary %>
   <% end %>
+  <span class="text-gray-600"><%= diary.bookmarks.count %></span>
 </div>
