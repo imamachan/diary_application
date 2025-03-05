@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :profile_comment, length: { maximum: 30 }, allow_blank: true
+  validates :reset_password_token, uniqueness: true, allow_nil: true
 
   def own?(object)
     id == object&.user_id

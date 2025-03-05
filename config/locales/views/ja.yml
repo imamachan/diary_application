@@ -1,6 +1,7 @@
 ja:
   defaults:
     delete_confirm: 削除しますか？
+    password_reset: パスワードリセット
     edit: 編集
     flash_messages:
       login_success: ログインしました
@@ -54,6 +55,22 @@ ja:
       to_login_page: ログインページへ
       update: 更新
       comment: コメント
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      email: メールアドレス
+      submit: 送信
+    edit:
+      title: パスワードリセット
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード確認
+      update: 更新
+    create:
+      success: パスワードリセット手順を送信しました
+    update:
+      success: パスワードを変更しました
+      fail: パスワードの変更に失敗しました。もう一度お試しください。
 
   users:
     new:
@@ -74,6 +91,7 @@ ja:
       password: パスワード
       login: ログイン
       back: 戻る
+      password_forget: パスワードを忘れた方はこちら
   header:
     logout: ログアウト
   sidebar:

@@ -1,5 +1,6 @@
 
 <% content_for(:title, t('.title')) %>
+<%= render "shared/flash_messages" %>
 
 <% if flash[:alert] %>
   <p class="text-red-500 text-center text-sm"><%= flash[:alert] %></p>
@@ -29,11 +30,20 @@
     </div>
     
     <!-- ログインボタン -->
-    <%= f.submit t(".login"), class: "block w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal font-['Inter'] hover:bg-[#ffb733] transition duration-200" %>
+    <div class="w-full flex justify-center mt-4">
+      <%= f.submit t(".login"), class: "w-[180px] h-[50px] bg-[#ffa306] text-center flex items-center justify-center text-[#333333] text-xl font-normal rounded-md hover:bg-[#ffb733] transition duration-200" %>
+    </div>
   <% end %>
 
   <!-- 戻るリンク (フォームの下に配置) -->
-  <div class="flex justify-start">
-    <%= link_to t(".back"), root_path, class: "text-zinc-800 text-base font-normal font-['Inter']" %>
-  </div>
+    <div class="w-full flex justify-start mt-2 ml-10">
+      <%= link_to t(".back"), root_path, class: "w-[180px] h-[50px] bg-gray-300 text-center flex items-center justify-center text-[#333333] text-xl font-normal rounded-md hover:bg-gray-400 transition duration-200" %>
+    </div>
+
+    <!-- パスワードリセット (適切な間隔で下に配置) -->
+    <div class="w-full flex justify-start mt-2 ml-10">
+      <%= link_to t('.password_forget'), new_password_reset_path, class: "text-blue-600 hover:underline" %>
+    </div>
+
+  
 </div>
