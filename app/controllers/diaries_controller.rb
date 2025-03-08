@@ -2,7 +2,13 @@ class DiariesController < ApplicationController
   before_action :require_login
 
   def index
-    @diaries = Diary.includes(:user)
+    @q = Diary.ransack(params[:q])
+    @diaries = @q.result(distinct: true)
+
+    if params[:q].present?
+      params[:q][:created_at_gteq] = params[:q][:created_at_gteq].to_date.beginning_of_day rescue nil
+      params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day rescue nil
+    end
   end
 
   def new

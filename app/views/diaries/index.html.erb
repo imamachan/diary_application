@@ -1,5 +1,85 @@
 <% content_for(:title, t('.title')) %>
 
+<div class="p-4 bg-white border border-gray-300 rounded-md shadow-md">
+  <%= search_form_for @q, url: diaries_path, method: :get, html: { class: "space-y-4" } do |f| %>
+
+    <!-- ✅ 上段（キーワード検索） -->
+    <div class="flex items-center space-x-4">
+      <div class="w-full">
+        <%= f.label :title_or_body_cont, "キーワード検索", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :title_or_body_cont, class: "w-full border p-2 rounded" %>
+      </div>
+    </div>
+
+    <!-- ✅ 下段（日付・天気・感情＋検索ボタン） -->
+    <div class="flex items-center space-x-4">
+      <!-- 📅 日付範囲指定 -->
+      <div class="flex space-x-2">
+        <div class="w-36">
+          <%= f.label :date_gteq, "開始日", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_field :date_gteq, class: "flatpickr w-full border p-2 rounded", data: { controller: "flatpickr" } %>
+        </div>
+        <div class="w-36">
+          <%= f.label :date_lteq, "終了日", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_field :date_lteq, class: "flatpickr w-full border p-2 rounded", data: { controller: "flatpickr" } %>
+        </div>
+      </div>
+
+      <!-- 天気アイコン選択 -->
+    <div class="mt-4 flex text-2xl space-x-4">
+      <input type="radio" name="q[weather_eq]" value="sunny" id="search_weather_sunny" class="hidden peer/sunny">
+      <label for="search_weather_sunny" class="cursor-pointer text-gray-500 peer-checked/sunny:text-gray-900 transition-colors">
+        <i class="fas fa-sun text-xl"></i>
+      </label>
+
+      <input type="radio" name="q[weather_eq]" value="cloudy" id="search_weather_cloudy" class="hidden peer/cloudy">
+      <label for="search_weather_cloudy" class="cursor-pointer text-gray-500 peer-checked/cloudy:text-gray-900 transition-colors">
+        <i class="fas fa-cloud text-xl"></i>
+      </label>
+
+      <input type="radio" name="q[weather_eq]" value="rainy" id="search_weather_rainy" class="hidden peer/rainy">
+      <label for="search_weather_rainy" class="cursor-pointer text-gray-500 peer-checked/rainy:text-gray-900 transition-colors">
+        <i class="fa-solid fa-umbrella text-xl"></i>
+      </label>
+    </div>
+
+    <!-- 感情アイコン選択 -->
+    <div class="mt-4 flex text-2xl space-x-4">
+      <input type="radio" name="q[emotion_eq]" value="smile" id="search_emotion_smile" class="hidden peer/smile">
+      <label for="search_emotion_smile" class="cursor-pointer text-gray-500 peer-checked/smile:text-gray-900">
+        <i class="fa-solid fa-face-smile text-inherit"></i>
+      </label>
+
+      <input type="radio" name="q[emotion_eq]" value="angry" id="search_emotion_angry" class="hidden peer/angry">
+      <label for="search_emotion_angry" class="cursor-pointer text-gray-500 peer-checked/angry:text-gray-900">
+        <i class="fa-solid fa-face-angry text-inherit"></i>
+      </label>
+
+      <input type="radio" name="q[emotion_eq]" value="sad" id="search_emotion_sad" class="hidden peer/sad">
+      <label for="search_emotion_sad" class="cursor-pointer text-gray-500 peer-checked/sad:text-gray-900">
+        <i class="fa-solid fa-face-sad-tear text-inherit"></i>
+      </label>
+
+      <input type="radio" name="q[emotion_eq]" value="normal" id="search_emotion_normal" class="hidden peer/normal">
+      <label for="search_emotion_normal" class="cursor-pointer text-gray-500 peer-checked/normal:text-gray-900">
+        <i class="fa-solid fa-face-meh text-inherit"></i>
+      </label>
+    </div>
+  
+
+      <!-- 🔍 検索ボタン（右側に配置） -->
+      <div>
+        <%= f.submit "検索", class: "px-8 py-2 bg-orange-500 text-white rounded shadow-md hover:bg-orange-600 transition" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="mb-6"> 
+</div>
+
+
 <% flash.each do |message_type, message| %>
   <% bg_color = case message_type.to_sym
                 when :success then "bg-blue-100 text-blue-700 border-blue-300"
