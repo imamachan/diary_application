@@ -67,27 +67,33 @@
     </div>
     
     <div class="flex space-x-6 text-gray-600 items-center">
-  <!-- ✅ ブックマークボタン & カウント -->
-  <div class="flex items-center space-x-1">
-    <%= render 'bookmark_buttons', { diary: @diary } %>
-  </div>
+  
+      <% if @diary.is_public? %>
+      <!-- ✅ ブックマークボタン & カウント -->
+        <div class="flex items-center space-x-1">
+          <%= render 'bookmark_buttons', { diary: @diary } %>
+        </div>
 
-  <!-- ✅ コメントアイコン & カウント -->
-<div id="comment-count-<%= @diary.id %>" class="flex items-center space-x-1">
-  <i class="fas fa-comment"></i>
-  <span><%= @diary.comments.count %></span>
-</div>
-
-
-</div>
+      <!-- ✅ コメントアイコン & カウント -->
+        <div id="comment-count-<%= @diary.id %>" class="flex items-center space-x-1">
+          <i class="fas fa-comment"></i>
+          <span><%= @diary.comments.count %></span>
+        </div>
+      <% end %>
+    </div>
 
   </div>
 </div>
 
 <div id="table-comment">
-  <%= render 'comments/form', comment: @comment, diary: @diary %>
+  <% if @diary.is_public? %>
+    <%= render 'comments/form', comment: @comment, diary: @diary %>
+  <% end %>
 
   <div id="comments-list">
-    <%= render partial: 'comments/comment_list', locals: { comments: @comments } %>
+    <% if @diary.is_public? %>
+      <%= render partial: 'comments/comment_list', locals: { comments: @comments } %>
+    <% end %>
   </div>
 </div>
+

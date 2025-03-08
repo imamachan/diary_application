@@ -3,7 +3,9 @@
     <!-- プロフィール情報 -->
     <div class="flex items-center">
       <!-- ユーザーアイコン -->
-      <div><%= image_tag current_user.profile_picture.url.presence || "sample.jpg", class: "w-14 h-14 rounded-full shadow-md" %></div>
+      <div>
+        <%= image_tag current_user.profile_picture.url.presence || "sample.jpg", class: "w-14 h-14 rounded-full shadow-md" %>
+      </div>
 
       <div class="ml-4 flex items-center">
         <div>
@@ -14,7 +16,9 @@
               <i class="fa-regular fa-pen-to-square"></i>
             <% end %>
           </div>
-          <div class="text-sm text-gray-600"><%= current_user.profile_comment.presence || "一言コメントがありません。" %></div>
+          <div class="text-sm text-gray-600">
+            <%= current_user.profile_comment.presence || "一言コメントがありません。" %>
+          </div>
         </div>
       </div>
     </div>
@@ -25,11 +29,15 @@
     </div>
   </div>
 
-  <!-- タブ -->
+  <!-- タブ（シンプルにURLでページ遷移） -->
   <div class="flex border-b">
-    <% tabs = { t("mypage_header.public") => "#", t("mypage_header.private") => "#", t("mypage_header.comments") => "#", t("mypage_header.favorite") => bookmarks_diaries_path } %>
-    <% tabs.each do |name, path| %>
-      <%= link_to name, path, class: "px-6 py-2 text-center w-1/4 #{name == t("mypage_header.public") ? 'bg-orange-400 text-white' : 'bg-white'}" %>
-    <% end %>
+    <%= link_to t("mypage_header.public"), mypage_path, 
+          class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'mypage' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
+    <%= link_to t("mypage_header.private"), private_mypage_diaries_path, 
+          class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'private_mypage' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
+    <%= link_to t("mypage_header.comments"), "#", 
+          class: "px-6 py-2 text-center w-1/4 #{controller.action_name == '#' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
+    <%= link_to t("mypage_header.favorite"), bookmarks_diaries_path, 
+          class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'bookmarks' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
   </div>
 </div>

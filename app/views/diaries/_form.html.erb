@@ -67,10 +67,26 @@
         </div>
       </div>
 
-        <!-- 公開・投稿ボタン -->
-        <div class="flex justify-between">
-          <button type="button" class="w-1/2 border p-2 rounded text-center">公開</button>
-          <%= f.submit t("helpers.submit.submit"), class: "w-1/2 border p-2 rounded bg-blue-500 text-white" %>
-        </div>
+        <!-- 公開・非公開選択 -->
+<div class="flex justify-between items-center mb-4">
+  <div class="flex space-x-4">
+    <label class="cursor-pointer">
+      <%= f.radio_button :is_public, true, class: "hidden peer/public" %>
+      <span class="px-4 py-2 border rounded peer-checked/public:bg-orange-500 peer-checked/public:text-white transition">
+        <%= t("diaries.new.public") %>
+      </span>
+    </label>
+
+    <label class="cursor-pointer">
+      <%= f.radio_button :is_public, false, class: "hidden peer/private" %>
+      <span class="px-4 py-2 border rounded peer-checked/private:bg-gray-500 peer-checked/private:text-white transition">
+       <%= t("diaries.new.private") %>
+      </span>
+    </label>
+  </div>
+
+  <%= f.submit t("helpers.submit.submit"), class: "w-1/2 border p-2 rounded bg-orange-500 text-white" %>
+</div>
+
 
       <% end %>

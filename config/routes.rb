@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit destroy], shallow: true
     collection do
       get :bookmarks
+      get :private_mypage
     end
   end
   resources :bookmarks, only: %i[create destroy]

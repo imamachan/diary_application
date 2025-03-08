@@ -34,6 +34,7 @@ ja:
       date: 日付
       body: 本文
       public: 公開
+      private: 非公開
       photo: 写真
     edit:
       title: 日記編集
@@ -42,6 +43,8 @@ ja:
       no_result: お気に入り中の掲示板がありません
     mypage:
       title: マイページ
+    private_mypage:
+      title: 非公開日記
   bookmarks:
     create:
       success: ブックマークしました
