@@ -1,36 +1,37 @@
 <div class="mb-6"> 
-<div class="w-full h-[200px] p-4 bg-white border border-zinc-800 flex flex-col space-y-4 relative">
-  <div class="flex items-center space-x-4">
-     <%= link_to diary.user do %>
-    <%= image_tag diary.user.profile_picture.url || 'sample.jpg', class: 'w-14 h-14 rounded-full object-cover' %>
-  <% end %>
-    <div class="flex flex-col">
-      <h2 class="text-xl font-bold">
-        <%= link_to diary.title, diary_path(diary) %>
-      </h2>
-      <p class="text-sm text-gray-500">
-        <%= diary.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+  <div class="w-full h-[200px] p-4 bg-white border border-zinc-800 flex flex-col space-y-4 relative">
+    <div class="flex items-center space-x-4">
+      <%= link_to diary.user do %>
+        <%= image_tag diary.user.profile_picture.url || 'sample.jpg', class: 'w-14 h-14 rounded-full object-cover' %>
+      <% end %>
+      <div class="flex flex-col">
+        <h2 class="text-xl font-bold">
+          <%= link_to diary.title, diary_path(diary) %>
+        </h2>
+        <p class="text-sm text-gray-500">
+          <%= diary.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+        </p>
+      </div>
+    </div>
+    <div class="bg-orange-100 border border-black p-4 h-[80px] overflow-hidden">
+      <p class="text-black text-base font-normal font-['Inter']">
+        <%= truncate(diary.body, length: 30) %>
       </p>
     </div>
-  </div>
-  <div class="bg-orange-100 border border-black p-4 h-[80px] overflow-hidden">
-    <p class="text-black text-base font-normal font-['Inter']">
-      <%= truncate(diary.body, length: 30) %>
-    </p>
-  </div>
-  <!-- ブックマークボタンを外枠の右下に配置 -->
-  <div class="flex justify-end space-x-6 text-gray-600 items-center">
-  <!-- ✅ ブックマークボタン & カウント -->
-  <div class="flex items-center space-x-1">
-    <%= render 'bookmark_buttons', { diary: diary } %>
-  </div>
 
-  <!-- ✅ コメントアイコン & カウント -->
-  <div class="flex items-center space-x-1">
-    <i class="fas fa-comment"></i>
-    <span><%= diary.comments.count %></span>
-  </div>
-</div>
+    <div class="flex justify-end space-x-6 text-gray-600 items-center">
+      <% if !diary.is_public? %>
+        <%# プライベート日記の場合はお気に入りとコメントを表示しない %>
+      <% else %>
+        <div class="flex items-center space-x-1">
+          <%= render 'bookmark_buttons', { diary: diary } %>
+        </div>
 
-</div>
+        <div class="flex items-center space-x-1">
+          <i class="fas fa-comment"></i>
+          <span><%= diary.comments.count %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

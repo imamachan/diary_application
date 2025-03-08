@@ -2,8 +2,8 @@ class DiariesController < ApplicationController
   before_action :require_login
 
   def index
-    @q = Diary.ransack(params[:q])
-    @diaries = @q.result(distinct: true)
+    @q = Diary.where(is_public: true).ransack(params[:q])
+    @diaries = @q.result(distinct: true).order(created_at: :desc)
 
     if params[:q].present?
       params[:q][:created_at_gteq] = params[:q][:created_at_gteq].to_date.beginning_of_day rescue nil
@@ -17,6 +17,7 @@ class DiariesController < ApplicationController
 
   def create
     @diary = current_user.diaries.build(diary_params)
+    @diary.is_public = ActiveModel::Type::Boolean.new.cast(params[:diary][:is_public])
     if @diary.save
       redirect_to diaries_path, success: "日記が投稿されました"
     else
@@ -26,6 +27,11 @@ class DiariesController < ApplicationController
 
   def show
     @diary = Diary.find(params[:id])
+
+    if !@diary.is_public && @diary.user != current_user
+      redirect_to diaries_path, alert: "この日記は非公開です。"
+    end
+
     @comment = Comment.new
     @comments = @diary.comments.includes(:user).order(created_at: :desc)
   end
@@ -36,6 +42,7 @@ class DiariesController < ApplicationController
 
   def update
     @diary = current_user.diaries.find(params[:id])
+    @diary.is_public = ActiveModel::Type::Boolean.new.cast(params[:diary][:is_public])
     if @diary.update(diary_params)
       redirect_to diary_path(@diary), success: t("defaults.flash_messages.updated", item: Diary.model_name.human)
     else
@@ -54,9 +61,17 @@ class DiariesController < ApplicationController
     @bookmark_diaries = current_user.bookmark_diaries.includes(:user).order(created_at: :desc)
   end
 
+  def mypage
+    @diaries = current_user.diaries.where(is_public: true).order(created_at: :desc)
+  end
+
+  def private_mypage
+    @diaries = current_user.diaries.where(is_public: false).order(created_at: :desc)
+  end
+
    private
 
   def diary_params
-    params.require(:diary).permit(:title, :body, :diary_image, :diary_image_cache, :date, :weather, :emotion)
+    params.require(:diary).permit(:title, :body, :diary_image, :diary_image_cache, :date, :weather, :emotion, :is_public)
   end
 end
