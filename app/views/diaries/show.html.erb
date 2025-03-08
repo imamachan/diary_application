@@ -31,6 +31,25 @@
               end 
             %>"></i>
         <% end %>
+
+        <% if @diary.emotion.present? %>
+          <!-- 感情アイコン（感情情報がある場合のみ表示）-->
+          <i class="fas 
+            <%= 
+              case @diary.emotion
+              when "smile"
+                "fa-solid fa-face-smile"
+              when "angry"
+                "fa-solid fa-face-angry"
+              when "sad"
+                "fa-solid fa-face-sad"
+              when "nomal"
+                "fa-solid fa-face-meh"
+              else
+                ""
+              end 
+            %>"></i>
+        <% end %>
       </p>
     </div>
   </div>
