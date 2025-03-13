@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
+  resources :notifications, only: [ :index, :destroy ] do
+    member do
+      patch :mark_as_read
+    end
+  end
 
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"

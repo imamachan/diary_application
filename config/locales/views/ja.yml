@@ -5,7 +5,7 @@ ja:
     edit: 編集
     flash_messages:
       login_success: ログインしました
-      login_failed: ログインに失敗しました
+      login_failed: ユーザー名またはパスワードが一致しません
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新出来ませんでした"
       deleted: "%{item}を削除しました"
@@ -100,6 +100,7 @@ ja:
   sidebar:
     mypage: マイページ
     diary_index: 日記一覧
+    notifications: 通知
   mypage_header:
     public: 公開
     private: 非公開

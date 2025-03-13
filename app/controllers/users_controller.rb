@@ -11,7 +11,9 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path
     else
-      render :new
+      @hide_header_footer = true
+      flash.now[:danger] = @user.errors.full_messages.join(", ")
+      render :new, status: :unprocessable_entity
     end
   end
 

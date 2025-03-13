@@ -11,8 +11,9 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to diaries_path, success: t("defaults.flash_messages.login_success")
     else
+      @hide_header_footer = true
       flash.now[:danger] = t("defaults.flash_messages.login_failed")
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
