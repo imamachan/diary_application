@@ -1,4 +1,9 @@
 <% content_for(:title, t('.title')) %>
+<% if flash[:danger] %>
+  <div class="bg-red-100 text-red-700 border border-red-300 p-3 rounded-md mb-4">
+    <%= flash[:danger] %>
+  </div>
+<% end %>
 
 <div class="flex w-full h-full">
   <!-- ロゴ (左側に右寄せ) -->

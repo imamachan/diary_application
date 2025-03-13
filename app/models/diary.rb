@@ -3,6 +3,7 @@ class Diary < ApplicationRecord
   mount_uploader :diary_image, DiaryImageUploader
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 65_535 }

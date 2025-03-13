@@ -1,0 +1,29 @@
+<% if @notifications.present? %>
+  <ul class="space-y-4">
+    <% @notifications.each do |notification| %>
+      <li id="notification_<%= notification.id %>" class="p-4 border rounded-lg bg-white shadow-md flex justify-between items-center">
+        <div>
+          <%= link_to mark_as_read_notification_path(notification),
+                      class: "block text-orange-500 hover:text-orange-300 font-medium",
+                      data: { turbo_method: :patch, turbo_frame: "_top" } do %>
+            <span class="<%= notification.read? ? 'text-gray-500' : 'text-black font-bold' %>">
+              <% if notification.action == "bookmarked" %>
+                  <%= "#{notification.notifier.name} があなたの日記にいいねしました" %>
+              <% elsif notification.action == "commented" %>
+                  <%= "#{notification.notifier.name} があなたの日記にコメントしました" %>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+        
+        <!-- 削除ボタン（バツ印） -->
+        <%= link_to "✖", notification_path(notification),
+                    method: :delete,
+                    data: { turbo_method: :delete },
+                    class: "text-gray-400 hover:text-red-500 text-lg" %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-center text-gray-500 mt-6">通知はありません</p>
+<% end %>

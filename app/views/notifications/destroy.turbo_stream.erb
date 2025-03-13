@@ -1,0 +1,9 @@
+<turbo-stream action="remove" target="notification_<%= @notification.id %>"></turbo-stream>
+
+<turbo-stream action="replace" target="notification_badge">
+  <template>
+    <% unless current_user.notifications.unread.exists? %>
+      <span id="notification_badge"></span>
+    <% end %>
+  </template>
+</turbo-stream>
