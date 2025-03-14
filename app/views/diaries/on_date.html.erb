@@ -1,0 +1,8 @@
+
+<div class="border rounded-lg shadow-md p-4 bg-white">
+  <% @diaries.each do |diary| %>
+    <%= render 'diaries/diary', diary: diary %>
+  <% end %>
+</div>
+
+<%= link_to "戻る", calendar_diaries_path, class: "block text-center mt-4 text-orange-500 hover:underline" %>
