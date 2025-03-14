@@ -8,7 +8,7 @@
           </div>
           <div class="w-1/3">
             <%= f.label :date, t("diaries.new.date") %>
-            <%= f.text_field :date, class: "flatpickr w-full border p-2 rounded", data: { controller: "flatpickr" } %>
+            <%= f.text_field :date, value: params[:date] || Date.today, class: "flatpickr w-full border p-2 rounded", data: { controller: "flatpickr" } %>
           </div>
           <div class="mt-4 w-1/3 flex text-2xl justify space-x-4">
             <input type="radio" name="diary[weather]" value="sunny" id="weather_sunny" class="hidden peer/sunny">

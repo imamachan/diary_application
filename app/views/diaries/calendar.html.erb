@@ -1,0 +1,39 @@
+<h1 class="text-2xl font-bold text-center my-4">カレンダー</h1>
+
+<!-- カレンダー全体（画面幅いっぱい） -->
+<div class="border rounded-lg shadow-md p-4 bg-white w-full mx-auto">
+  <!-- 7列グリッドで均等に配置 -->
+  <div class="w-full">
+    <%= month_calendar do |date| %>
+      <% diaries_on_date = @diaries.select { |d| d.date == date } %>
+
+      <!-- 各日付の枠（正方形に近づける） -->
+      <div class="border p-6 rounded aspect-square flex flex-col justify-between relative bg-gray-100 h-32">
+        <!-- 日付表示 -->
+        <% require 'holidays' %>
+        <% holidays = Holidays.on(date, :jp) %>
+
+        <div class="absolute top-1 left-1 text-sm font-semibold
+                    <%= 'text-red-500' if date.sunday? || holidays.any? %> 
+                    <%= 'text-blue-500' if date.saturday? %>">
+          <%= date.day %>
+        </div>
+
+        <!-- 日記投稿数の表示 -->
+        <% if diaries_on_date.any? %>
+          <div class="text-center mt-auto">
+            <%= link_to "#{diaries_on_date.count}件の日記", on_date_diaries_path(date: date), 
+                        class: "bg-orange-400 text-white px-2 py-1 rounded text-sm hover:bg-orange-500 block" %>
+          </div>
+        <% end %>
+
+        <!-- +アイコン（日記がない場合のみ表示） -->
+        <% if diaries_on_date.empty? %>
+          <%= link_to new_diary_path(date: date), class: "absolute bottom-1 right-1 text-gray-500 hover:text-orange-400 text-xl" do %>
+            <i class="fa-solid fa-plus"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

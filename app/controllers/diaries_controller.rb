@@ -69,6 +69,14 @@ class DiariesController < ApplicationController
     @diaries = current_user.diaries.where(is_public: false).order(created_at: :desc)
   end
 
+  def calendar
+    @diaries = current_user.diaries
+  end
+
+  def on_date
+    date = Date.parse(params[:date])
+    @diaries = current_user.diaries.where(date: date)
+  end
    private
 
   def diary_params

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     collection do
       get :bookmarks
       get :private_mypage
+      get :calendar
+      get "on_date", to: "diaries#on_date"
     end
   end
   resources :bookmarks, only: %i[create destroy]
