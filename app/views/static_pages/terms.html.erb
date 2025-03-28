@@ -1,0 +1,6 @@
+<% content_for(:title, t('.title')) %>
+
+<h1>
+<%= t(".title") %>
+</h1>
+<%= simple_format(File.read(Rails.root.join('app/views/static_pages/terms.txt'))) %>

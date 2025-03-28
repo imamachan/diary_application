@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   delete "logout", to: "user_sessions#destroy"
   get "diaries", to: "diaries#index"
   get "mypage", to: "diaries#mypage"
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback"
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  get "/terms", to: "static_pages#terms"
+  get "/privacy", to: "static_pages#privacy"
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
