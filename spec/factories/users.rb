@@ -7,7 +7,7 @@ FactoryBot.define do
 
     trait :with_google_auth do
       after(:create) do |user|
-        user.authentications.create(provider: "google", uid: "1234567890" )
+        user.authentications.create(provider: "google", uid: "1234567890")
       end
     end
   end
