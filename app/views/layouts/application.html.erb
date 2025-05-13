@@ -10,6 +10,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= yield :meta_tags %>
+
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">

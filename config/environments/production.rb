@@ -2,7 +2,8 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.hosts << "hibilog.com"
+  config.hosts << "www.hibilog.com"
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
@@ -18,10 +19,10 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -78,10 +79,23 @@ Rails.application.configure do
   # caching is enabled.
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+  address:              "smtp.gmail.com",
+  port:                 587,
+  domain:               "gmail.com",
+  user_name:            Rails.application.credentials.dig(:gmail, :user_name),
+  password:             Rails.application.credentials.dig(:gmail, :password),
+  authentication:       "plain",
+  enable_starttls_auto: true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.default_url_options = {
+  host: "https://hibilog.com"
+  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
