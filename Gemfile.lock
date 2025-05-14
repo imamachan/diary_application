@@ -402,7 +402,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  brakeman
+  brakeman (= 7.0.2)
   capybara
   carrierwave (= 3.1.2)
   config
