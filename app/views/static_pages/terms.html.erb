@@ -1,6 +1,13 @@
 <% content_for(:title, t('.title')) %>
 
-<h1>
-<%= t(".title") %>
-</h1>
-<%= simple_format(File.read(Rails.root.join('app/views/static_pages/terms.txt'))) %>
+<div class="max-w-3xl mx-auto px-4 py-12">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">
+    <%= t(".title") %>
+  </h1>
+
+  <div class="bg-white shadow-md rounded-lg p-6 max-h-[500px] overflow-y-auto border border-gray-200">
+    <pre class="whitespace-pre-wrap font-sans text-sm leading-relaxed">
+      <%= File.read(Rails.root.join('app/views/static_pages/terms.txt')) %>
+    </pre>
+  </div>
+</div>

@@ -6,10 +6,8 @@ class StaticPagesController < ApplicationController
     end
 
     def terms
-      @hide_header_footer = true
     end
 
     def privacy
-      @hide_header_footer = true
     end
 end
