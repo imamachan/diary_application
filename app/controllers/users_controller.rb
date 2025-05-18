@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to login_path
     else
       @hide_header_footer = true
       flash.now[:danger] = @user.errors.full_messages.join(", ")
