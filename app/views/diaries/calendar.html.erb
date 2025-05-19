@@ -30,7 +30,7 @@
         <!-- +アイコン（日記がない場合のみ表示） -->
         <% if diaries_on_date.empty? %>
           <%= link_to new_diary_path(date: date), class: "absolute bottom-1 right-1 text-gray-500 hover:text-orange-400 text-xl" do %>
-            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-pen"></i>
           <% end %>
         <% end %>
       </div>
