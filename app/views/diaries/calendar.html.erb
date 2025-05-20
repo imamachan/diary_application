@@ -3,8 +3,14 @@
 <!-- カレンダー全体（画面幅いっぱい） -->
 <div class="border rounded-lg shadow-md p-4 bg-white w-full mx-auto">
   <!-- 7列グリッドで均等に配置 -->
+  <% current_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.current %>
+
   <div class="w-full">
-    <%= month_calendar do |date| %>
+    <%= month_calendar(
+        previous_link_text: (current_date << 1).strftime("%-m月"),
+        next_link_text: (current_date >> 1).strftime("%-m月"),
+        today_link_text: "今月"
+        ) do |date| %>
       <% diaries_on_date = @diaries.select { |d| d.date == date } %>
 
       <!-- 各日付の枠（正方形に近づける） -->
