@@ -11,6 +11,7 @@
         next_link_text: (current_date >> 1).strftime("%-m月"),
         today_link_text: "今月"
         ) do |date| %>
+          
       <% diaries_on_date = @diaries.select { |d| d.date == date } %>
 
       <!-- 各日付の枠（正方形に近づける） -->
