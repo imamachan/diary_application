@@ -6,10 +6,10 @@
   <% current_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.current %>
 
   <div class="w-full">
-  
+
     <%= month_calendar(
-        previous_link_text: (current_date << 1).strftime("%-m月"),
-        next_link_text: (current_date >> 1).strftime("%-m月"),
+        previous_link_text: "前の月",
+        next_link_text: "次の月",
         today_link_text: "今月"
         ) do |date| %>
 
