@@ -1,17 +1,36 @@
+<style>
+  nav {
+    display: none !important;
+  }
+</style>
+
 <h1 class="text-2xl font-bold text-center my-4">カレンダー</h1>
 
 <!-- カレンダー全体（画面幅いっぱい） -->
 <div class="border rounded-lg shadow-md p-4 bg-white w-full mx-auto">
   <!-- 7列グリッドで均等に配置 -->
-  <% current_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.current %>
+  <% current_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.current.beginning_of_month %>
 
   <div class="w-full">
 
-    <%= month_calendar(
-        previous_link_text: "前の月",
-        next_link_text: "次の月",
-        today_link_text: "今月"
-        ) do |date| %>
+  <div class="flex justify-between mb-6 items-center text-gray-700">
+
+  <%= link_to "＜ #{(current_date << 1).strftime('%-m月')}", 
+      calendar_diaries_path(start_date: current_date << 1), 
+      class: "text-base hover:text-blue-600 transition" %>
+
+  <%= link_to "今月（#{current_date.strftime('%-m月')}）", 
+      calendar_diaries_path(start_date: Date.current.beginning_of_month), 
+      class: "text-2xl font-bold hover:text-orange-600 transition" %>
+
+  <%= link_to "#{(current_date >> 1).strftime('%-m月')} ＞", 
+      calendar_diaries_path(start_date: current_date >> 1), 
+      class: "text-base hover:text-blue-600 transition" %>
+
+</div>
+
+
+  <%= month_calendar(start_date: current_date, show_navigation: false) do |date| %>
 
       <% diaries_on_date = @diaries.select { |d| d.date == date } %>
 
