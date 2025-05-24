@@ -19,7 +19,7 @@
       calendar_diaries_path(start_date: current_date << 1), 
       class: "text-base hover:text-blue-600 transition" %>
 
-  <%= link_to "今月（#{current_date.strftime('%-m月')}）", 
+  <%= link_to "今月", 
       calendar_diaries_path(start_date: Date.current.beginning_of_month), 
       class: "text-2xl font-bold hover:text-orange-600 transition" %>
 
