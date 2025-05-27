@@ -1,5 +1,5 @@
 <style>
-  nav {
+  .calendar-wrapper nav {
     display: none !important;
   }
 </style>
@@ -7,7 +7,7 @@
 <h1 class="text-2xl font-bold text-center my-4">カレンダー</h1>
 
 <!-- カレンダー全体（画面幅いっぱい） -->
-<div class="border rounded-lg shadow-md p-4 bg-white w-full mx-auto">
+<div class="calendar-wrapper border rounded-lg shadow-md p-4 bg-white w-full mx-auto">
   <!-- 7列グリッドで均等に配置 -->
   <% current_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.current.beginning_of_month %>
 
