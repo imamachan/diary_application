@@ -91,6 +91,8 @@ ja:
       title: マイページ
   comments:
     body: コメント内容
+    my_comments:
+      title: コメント一覧
   user_sessions:
     new:
       title: ログイン
