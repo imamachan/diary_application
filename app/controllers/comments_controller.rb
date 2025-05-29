@@ -32,6 +32,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def my_comments
+    @comments = Comment.includes(:user, :diary)
+                       .where(diary: current_user.diaries)
+                       .order(created_at: :desc)
+  end
+
   private
 
   def comment_params

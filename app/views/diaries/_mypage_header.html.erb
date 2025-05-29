@@ -38,8 +38,8 @@
           class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'mypage' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
     <%= link_to t("mypage_header.private"), private_mypage_diaries_path, 
           class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'private_mypage' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
-    <%= link_to t("mypage_header.comments"), "#", 
-          class: "px-6 py-2 text-center w-1/4 #{controller.action_name == '#' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
+    <%= link_to t("mypage_header.comments"), mypage_comments_path, 
+          class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'my_comments' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
     <%= link_to t("mypage_header.favorite"), bookmarks_diaries_path, 
           class: "px-6 py-2 text-center w-1/4 #{controller.action_name == 'bookmarks' ? 'bg-orange-400 text-white' : 'bg-white'}" %>
   </div>
