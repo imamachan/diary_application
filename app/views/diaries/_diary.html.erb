@@ -1,5 +1,5 @@
 <div class="mb-6"> 
-  <div class="w-full h-[200px] p-4 bg-white border border-zinc-800 flex flex-col space-y-4 relative">
+  <div class="w-full p-4 bg-white border border-zinc-800 flex flex-col space-y-4 relative">
     <div class="flex items-center space-x-4">
       <%= link_to diary.user do %>
         <%= image_tag diary.user.profile_picture.url || 'sample.jpg', class: 'w-14 h-14 rounded-full object-cover' %>
@@ -19,6 +19,14 @@
       </p>
     </div>
 
+    <% if diary.diary_image.present? %>
+      <div class="w-full mt-2 overflow-hidden rounded border">
+        <%= image_tag diary.diary_image.url, alt: "Diary Image",
+         class: "w-full h-[200px] object-cover" %>
+      </div>
+    <% end %>
+
+    
     <div class="flex justify-end space-x-6 text-gray-600 items-center">
       <% if !diary.is_public? %>
         <%# プライベート日記の場合はお気に入りとコメントを表示しない %>

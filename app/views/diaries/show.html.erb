@@ -59,6 +59,14 @@
     <%= @diary.body %>
   </div>
 
+  <!-- 画像 -->
+  <% if @diary.diary_image.present? %>
+      <div class="w-full mt-2 overflow-hidden rounded border">
+        <%= image_tag @diary.diary_image.url, alt: "Diary Image",
+         class: "w-full h-[200px] object-cover" %>
+      </div>
+  <% end %>
+
   <!-- ボタン -->
   <div class="flex justify-between items-center mt-6">
     <div class="space-x-4">
